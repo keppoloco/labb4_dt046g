@@ -1,42 +1,124 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <fstream>
+#include <chrono>
+#include <numeric>
 
-const int AMOUNT = 1000;
+const int REPETITIONS = 10;
+const int SAMPLES = 100;
 
-void count_sort(std::vector<int>::iterator first, std::vector<int>::iterator last);
-void print_vector(std::vector<int>::iterator first, std::vector<int>::iterator last);
-void get_random_numbers(std::vector<int>&);
+double time_it(std::vector<int>*);
+double average_value(const std::vector<double> data);
+double std_dev(std::vector<double> data);
+void counting_sort(std::vector<int>* arr);
+void display_array(std::vector<int>::iterator, std::vector<int>::iterator);
 
 int main()
 {
+	const int DATA_SIZE = 500000;
+
 	srand(time(NULL));
+	std::vector<double> period(SAMPLES);
+	std::vector<int>* arr = new std::vector<int>();
+	
+	for (int i = 0; i < (DATA_SIZE * REPETITIONS); i++)
+	{
+		int number = rand() % (DATA_SIZE * REPETITIONS);
+		arr->push_back(number);
+	}
 
-	std::vector<int> vector_to_be_sorted;
-	get_random_numbers(vector_to_be_sorted);
+	std::ofstream os;
+	os.open("counting_sort.data", std::ios::out | std::ios::app);
+	os << "N\t" << "T[ms]\t" << "dev[ms]\t" << "Samples\n";
 
-	count_sort(vector_to_be_sorted.begin(), vector_to_be_sorted.end());
+	for (int iter = 1; iter <= REPETITIONS; iter++)
+	{
+		for (int i = 0; i < SAMPLES; i++)
+		{
+			// run it
+			period[i] = time_it(arr);
+		}
+		os << DATA_SIZE * iter << "\t" << average_value(period) << "\t" << std_dev(period) << "\t" << SAMPLES << '\n';
+	}
+	os.close();
+
+	display_array(arr->begin(), arr->end());
 
 	return 0;
 }
 
-void count_sort(std::vector<int>::iterator first, std::vector<int>::iterator last)
+void counting_sort(std::vector<int>* arr)
 {
+	std::vector<int> output(arr->size() + 1);
+	int max = arr->at(0);
+	max = *(std::max_element(arr->begin(), arr->end()));
+	std::vector<int> count(max + 1);
 
-}
-
-void get_random_numbers(std::vector<int>& vec)
-{
-	for (int i = 0; i < AMOUNT; i++)
+	for (int i = 0; i <= max; ++i)
 	{
-		int random_number = rand();
-		vec.push_back(random_number);
+		count[i] = 0;
+	}
+
+	for (int i = 0; i < arr->size(); i++)
+	{
+		count[arr->at(i)]++;
+	}
+
+	for (int i = 1; i <= max; i++)
+	{
+		count[i] += count[i - 1];
+	}
+
+	for (int i = arr->size() - 1; i >= 0; i--)
+	{
+		output[count[arr->at(i)] - 1] = arr->at(i);
+		count[arr->at(i)]--;
+	}
+
+	for (int i = 0; i < arr->size(); i++)
+	{
+		arr->at(i) = output[i];
 	}
 }
 
-void print_vector(std::vector<int>::iterator first, std::vector<int>::iterator last)
+void display_array(std::vector<int>::iterator first, std::vector<int>::iterator last)
 {
 	for (auto itr = first; itr != last; itr++)
 	{
-		std::cout << *itr << std::endl;
+		std::cout << *itr << '\n';
 	}
+}
+
+double time_it(std::vector<int>* arr)
+{
+	auto start = std::chrono::high_resolution_clock::now();
+	counting_sort(arr);
+	auto stop = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double, std::micro> total = (stop - start);
+	return total.count();
+}
+
+double average_value(const std::vector<double> data)
+{
+	double sum = std::accumulate(data.begin(),
+		data.end(),
+		0.0);
+	const size_t N = data.size();
+	double avg = sum / N;
+
+	return avg;
+}
+
+double std_dev(std::vector<double> data)
+{
+	const size_t N = data.size();
+	double avg_val = average_value(data);
+	double dev_square = 0;
+
+	for (std::vector<double>::iterator itr = data.begin(); itr != data.end(); itr++) {
+		dev_square += pow((*itr - avg_val), 2);
+	}
+
+	return std::sqrt(dev_square * (1.0 / (N - 1)));
 }

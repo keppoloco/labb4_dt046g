@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Counting Sort\Source.cpp(21,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Counting Sort\Source.cpp(63,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Counting Sort\Source.cpp(79,20): warning C4018: '<': signed/unsigned mismatch
+  Counting Sort.vcxproj -> C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Debug\Counting Sort.exe

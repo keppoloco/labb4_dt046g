@@ -1,0 +1,10 @@
+﻿  Source.cpp
+C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Counting Sort\Source.cpp(21,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Counting Sort\Source.cpp(63,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Counting Sort\Source.cpp(79,20): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  8 of 296 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Counting Sort.vcxproj -> C:\Users\Tiimm\Documents\Plugg and stuff\labb4_dt046g\Counting Sort\Release\Counting Sort.exe
