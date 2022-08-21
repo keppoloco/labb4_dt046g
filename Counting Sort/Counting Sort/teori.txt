@@ -3,3 +3,7 @@ https://www.programiz.com/dsa/counting-sort
 https://stackoverflow.com/questions/27301287/what-is-the-difference-between-onk-and-onk-in-time-complexity
 https://cs.stackexchange.com/questions/79727/in-counting-sort-time-complexity-notation-onk-k-is-number-of-distinct-elemen
 https://en.wikipedia.org/wiki/Counting_sort
+https://iq.opengenus.org/time-and-space-complexity-of-counting-sort/
+
+Beskrivningen ska innehålla alla väsentliga algoritmiska delar 
+och implementationer för elementära operationer, antingen i c++ eller pseudokod.  Illustrationer är nödvändiga.

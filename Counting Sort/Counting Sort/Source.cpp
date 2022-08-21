@@ -19,9 +19,9 @@ int main()
 	const int DATA_SIZE = 500000;
 
 	srand(time(NULL));
-	std::vector<double> period(SAMPLES);
 	std::vector<int>* arr = new std::vector<int>();
-	
+	std::vector<double> period(SAMPLES);
+
 	for (int i = 0; i < (DATA_SIZE * REPETITIONS); i++)
 	{
 		int number = rand() % (DATA_SIZE * REPETITIONS);
@@ -51,8 +51,7 @@ int main()
 void counting_sort(std::vector<int>* arr)
 {
 	std::vector<int> output(arr->size() + 1);
-	int max = arr->at(0);
-	max = *(std::max_element(arr->begin(), arr->end()));
+	int max = *(std::max_element(arr->begin(), arr->end()));
 	std::vector<int> count(max + 1);
 
 	for (int i = 0; i <= max; ++i)

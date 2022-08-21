@@ -403,3 +403,61 @@ correlation matrix of the fit parameters:
 a               1.000 
 k              -0.837  1.000 
 b               0.837 -1.000  1.000 
+
+
+*******************************************************************************
+Tue Aug 16 18:23:43 2022
+
+
+FIT:    data read from datafile index 0
+        format = z
+        x range restricted to [500000. : 5.00000e+06]
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * (x + k) + b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             k             b            
+   0 9.4412456901e+13   0.00e+00  1.79e+06    1.000000e+00   1.000000e+00   1.000000e+00
+   3 2.5043479943e+09  -4.37e-01  1.79e+03    9.605097e-03   1.000002e+00   1.000230e+00
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 2.50435e+09
+rel. change during last iteration : -4.36907e-06
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 18914.7
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.57764e+08
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.0096051        +/- 0.007035     (73.24%)
+k               = 1                +/- 1.201e+13    (1.201e+15%)
+b               = 1.00023          +/- 1.153e+11    (1.153e+13%)
+
+correlation matrix of the fit parameters:
+                a      k      b      
+a               1.000 
+k               0.806  1.000 
+b              -0.806 -1.000  1.000 
+
+
+*******************************************************************************
+Tue Aug 16 18:24:36 2022
+
+
+FIT:    data read from datafile index 0
+        format = z
+        x range restricted to [500000. : 5.00000e+06]
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x + b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             k             b            
+   0 9.4412402575e+13   0.00e+00  1.79e+06    1.000000e+00   1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
